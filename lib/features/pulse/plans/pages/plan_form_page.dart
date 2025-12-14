@@ -133,7 +133,7 @@ class _PlanFormPageState extends ConsumerState<PlanFormPage> {
                    Expanded(child: TextFormField(controller: _priceController, decoration: const InputDecoration(labelText: 'Price'), keyboardType: TextInputType.number)),
                    const SizedBox(width: 16),
                    Expanded(child: DropdownButtonFormField<String>(
-                     value: _cycle,
+                      initialValue: _cycle,
                      decoration: const InputDecoration(labelText: 'Cycle'),
                      items: ['monthly', 'annual'].map((e) => DropdownMenuItem(value: e, child: Text(e))).toList(),
                      onChanged: (v) => setState(() => _cycle = v!),

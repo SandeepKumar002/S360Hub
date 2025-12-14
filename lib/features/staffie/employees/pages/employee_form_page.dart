@@ -110,8 +110,8 @@ class _EmployeeFormPageState extends ConsumerState<EmployeeFormPage> {
                const SizedBox(height: 16),
                TextFormField(controller: _mobileController, decoration: const InputDecoration(labelText: 'Mobile')),
                const SizedBox(height: 16),
-               DropdownButtonFormField<String>(
-                 value: _status,
+                DropdownButtonFormField<String>(
+                  initialValue: _status,
                  decoration: const InputDecoration(labelText: 'Status'),
                  items: ['active', 'notice_period', 'terminated', 'resigned'].map((e) => DropdownMenuItem(value: e, child: Text(e))).toList(),
                  onChanged: (v) => setState(() => _status = v!),

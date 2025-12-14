@@ -98,8 +98,8 @@ class _OrganizationFormPageState extends ConsumerState<OrganizationFormPage> {
                const SizedBox(height: 16),
                TextFormField(controller: _capacityController, decoration: const InputDecoration(labelText: 'User Capacity'), keyboardType: TextInputType.number),
                const SizedBox(height: 16),
-               DropdownButtonFormField<String>(
-                 value: _status,
+                DropdownButtonFormField<String>(
+                  initialValue: _status,
                  decoration: const InputDecoration(labelText: 'Status'),
                  items: ['active', 'trial', 'suspended'].map((e) => DropdownMenuItem(value: e, child: Text(e))).toList(),
                  onChanged: (v) => setState(() => _status = v),
