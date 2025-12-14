@@ -1,0 +1,111 @@
+class TaxforgeHsnSacCode {
+  final String id;
+  final String? code;
+  final String? type;
+  final String? description;
+  final double? defaultGstRate;
+  final String? defaultGstType;
+  final String? unitOfMeasure;
+  final bool? isExempt;
+  final bool? itcEligible;
+  final String? accountingCode;
+  final DateTime? effectiveFrom;
+  final DateTime? effectiveTo;
+  final bool? isActive;
+  final Map<String, dynamic>? metadata;
+  final DateTime? createdAt;
+  final String? createdBy;
+  final DateTime? updatedAt;
+  final String? updatedBy;
+  final DateTime? approvedAt;
+  final String? approvedBy;
+  final DateTime? deletedAt;
+  final String? deletedBy;
+  final String? deleteType;
+  final bool? isDeleted;
+
+  TaxforgeHsnSacCode({
+    required this.id,
+    this.code,
+    this.type,
+    this.description,
+    this.defaultGstRate,
+    this.defaultGstType,
+    this.unitOfMeasure,
+    this.isExempt,
+    this.itcEligible,
+    this.accountingCode,
+    this.effectiveFrom,
+    this.effectiveTo,
+    this.isActive,
+    this.metadata,
+    this.createdAt,
+    this.createdBy,
+    this.updatedAt,
+    this.updatedBy,
+    this.approvedAt,
+    this.approvedBy,
+    this.deletedAt,
+    this.deletedBy,
+    this.deleteType,
+    this.isDeleted,
+  });
+
+  factory TaxforgeHsnSacCode.fromJson(Map<String, dynamic> json) {
+    return TaxforgeHsnSacCode(
+      id: json['id'] as String,
+      code: json['code'] as String?,
+      type: json['type'] as String?,
+      description: json['description'] as String?,
+      defaultGstRate: (json['default_gst_rate'] as num?)?.toDouble(),
+      defaultGstType: json['default_gst_type'] as String?,
+      unitOfMeasure: json['unit_of_measure'] as String?,
+      isExempt: json['is_exempt'] as bool?,
+      itcEligible: json['itc_eligible'] as bool?,
+      accountingCode: json['accounting_code'] as String?,
+      effectiveFrom: json['effective_from'] == null ? null : DateTime.parse(json['effective_from'] as String),
+      effectiveTo: json['effective_to'] == null ? null : DateTime.parse(json['effective_to'] as String),
+      isActive: json['is_active'] as bool?,
+      metadata: json['metadata'] as Map<String, dynamic>? ?? {},
+      createdAt: json['created_at'] == null ? null : DateTime.parse(json['created_at'] as String),
+      createdBy: json['created_by'] as String?,
+      updatedAt: json['updated_at'] == null ? null : DateTime.parse(json['updated_at'] as String),
+      updatedBy: json['updated_by'] as String?,
+      approvedAt: json['approved_at'] == null ? null : DateTime.parse(json['approved_at'] as String),
+      approvedBy: json['approved_by'] as String?,
+      deletedAt: json['deleted_at'] == null ? null : DateTime.parse(json['deleted_at'] as String),
+      deletedBy: json['deleted_by'] as String?,
+      deleteType: json['delete_type'] as String?,
+      isDeleted: json['is_deleted'] as bool?,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'code': code,
+      'type': type,
+      'description': description,
+      'default_gst_rate': defaultGstRate,
+      'default_gst_type': defaultGstType,
+      'unit_of_measure': unitOfMeasure,
+      'is_exempt': isExempt,
+      'itc_eligible': itcEligible,
+      'accounting_code': accountingCode,
+      'effective_from': effectiveFrom?.toIso8601String(),
+      'effective_to': effectiveTo?.toIso8601String(),
+      'is_active': isActive,
+      'metadata': metadata,
+      'created_at': createdAt?.toIso8601String(),
+      'created_by': createdBy,
+      'updated_at': updatedAt?.toIso8601String(),
+      'updated_by': updatedBy,
+      'approved_at': approvedAt?.toIso8601String(),
+      'approved_by': approvedBy,
+      'deleted_at': deletedAt?.toIso8601String(),
+      'deleted_by': deletedBy,
+      'delete_type': deleteType,
+      'is_deleted': isDeleted,
+    };
+  }
+}

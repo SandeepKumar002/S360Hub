@@ -1,0 +1,53 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../core/widgets/common/async_value_widget.dart';
+import '../repositories/course_units_repository.dart';
+import '../models/course_unit_model.dart';
+
+class TrainingCourseUnitDetailPage extends ConsumerWidget {
+  final String id;
+  const TrainingCourseUnitDetailPage({super.key, required this.id});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final itemAsync = ref.watch(trainingCourseUnitDetailProvider(id));
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Details'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.edit),
+            onPressed: () => context.push('/training/course-units/$id/edit'),
+          ),
+        ],
+      ),
+      body: AsyncValueWidget<TrainingCourseUnit>(
+        value: itemAsync,
+        data: (item) {
+          return ListView(
+            padding: const EdgeInsets.all(16),
+            children: [
+              ListTile(title: Text('CourseId'), subtitle: Text(item.courseId.toString())),
+              ListTile(title: Text('Title'), subtitle: Text(item.title.toString())),
+              ListTile(title: Text('ContentRefId'), subtitle: Text(item.contentRefId.toString())),
+              ListTile(title: Text('Sequence'), subtitle: Text(item.sequence.toString())),
+              ListTile(title: Text('Metadata'), subtitle: Text(item.metadata.toString())),
+              ListTile(title: Text('CreatedAt'), subtitle: Text(item.createdAt.toString())),
+              ListTile(title: Text('CreatedBy'), subtitle: Text(item.createdBy.toString())),
+              ListTile(title: Text('UpdatedAt'), subtitle: Text(item.updatedAt.toString())),
+              ListTile(title: Text('UpdatedBy'), subtitle: Text(item.updatedBy.toString())),
+              ListTile(title: Text('ApprovedAt'), subtitle: Text(item.approvedAt.toString())),
+              ListTile(title: Text('ApprovedBy'), subtitle: Text(item.approvedBy.toString())),
+              ListTile(title: Text('DeletedAt'), subtitle: Text(item.deletedAt.toString())),
+              ListTile(title: Text('DeletedBy'), subtitle: Text(item.deletedBy.toString())),
+              ListTile(title: Text('DeleteType'), subtitle: Text(item.deleteType.toString())),
+              ListTile(title: Text('IsDeleted'), subtitle: Text(item.isDeleted.toString())),
+            ],
+          );
+        },
+      ),
+    );
+  }
+}
